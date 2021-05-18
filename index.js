@@ -6,7 +6,7 @@ const GoogleStrategy = require('passport-google-oauth20');
 
 const mySecret = /* Ommitted for Security reasons*/
 
-const myID = '/*Ommitted for Security reasons*/
+const myID = /*Ommitted for Security reasons*/
 
 let nextID = null;
 // Google login credentials, used when the user contacts
