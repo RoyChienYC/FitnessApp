@@ -123,12 +123,6 @@ app.get('/query', isAuthenticated,
       res.send('HTTP query!') });
 
 
-/* ---------------------------------------------------------
-------------------------------------------------------------
----------------------MERGE PART BELOW-----------------------
-------------------------------------------------------------
-----------------------------------------------------------*/
-
 const dbo = require('./databaseOps');
 
 // Promises-wrapped version of sqlite3
@@ -178,9 +172,7 @@ app.post('/store', isAuthenticated, async function(request, response, next) {
 
   /* adding new field*/
   request.body.userid = request.user.userid;
-  // console.log("OOLALALA REQUEST BODY :", request.body);
   let activity = act.Activity(request.body)
-  // console.log("OHOHOHO this is activity", activity);
   await dbo.post_activity(activity)
   
   response.send({ message: "I got your POST request"});
@@ -303,9 +295,6 @@ function date_to_UTC_datetime(date) {
 }
 
 
-/* ------------------END Part 2TUTOR CODE ------------------------------------------------------*/
-
-
 // finally, file not found, if we cannot handle otherwise.
 app.use( fileNotFound );
 
@@ -372,7 +361,7 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     dbo.get_all();
     console.log(username + " uwu");
     done(null, userid);   
-}       // create separate async function in databaseops.js file to insert into             new database
+}       // create separate async function in databaseops.js file to insert into new database
         // from sqlwrap.js
 
 // Part of Server's sesssion set-up.  
