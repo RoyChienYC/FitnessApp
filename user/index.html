@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Log</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700;1,800&display=swap" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="./css/fitnessLog.css" rel="stylesheet" type="text/css" />
+    <link href="./css/reminder.css" rel="stylesheet" type="text/css" />
+    <link href="./css/barchart.css" rel="stylesheet">
+    <script defer src="./js/fitnessLog.js"></script>
+    <script defer src="https://d3js.org/d3.v6.min.js"></script>
+    <script defer type="module" src="./js/reminder.js"></script>
+    <!--
+    <script defer type="module" src="./js/main.js"></script>
+    -->
+</head>
+<body>
+    <div id="progress-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <div id="progress-form">
+          <div id="progress-form-inputs">
+            <div class="progress-form-item">
+              <label>
+                View Activity for:
+              </label>
+              <select name="view-activities" id="view-activity-dropdown" >
+                <option value="Walk">Walk</option>
+                <option value="Run">Run</option>
+                <option value="Swim">Swim</option>
+                <option value="Bike">Bike</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Soccer">Soccer</option>
+                <option value="Basketball">Basketball</option>
+              </select>  
+            </div>
+            <div class="progress-form-item">
+              <label>
+                For week ending:
+              </label>
+              <input type="date" id="viewAct-date" />
+            </div>
+          </div>
+          <button type="button" id="submit-progress-form-button" class="form-button">Go</button>
+        </div>
+        <div id="barchart-wrapper">
+          <div id='chart-anchor'></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fitness Log Banner -->
+    <nav>
+        <img id="white-logo" src="./images/tractivity-logo-white.png" alt="tractivity logo">
+        <a href="/logout">
+          <button type="button" id="log-out">Logout</button>
+        </a> 
+
+    </nav>
+  
+    <!-- Fitness Log Welcome Message -->
+    <header>
+      <div id="welcome">
+
+        <h1 id="welc">Welcome back,<br><span id="username"></span></h1>
+        <img id="workoutImage" src="./images/header_image.png" alt="people playing sports" />
+        <p class="subtitle">What activity session are you logging?</p>
+      </div>
+    </header>
+      
+    <main>
+
+      <!-- Reminder Section -->
+      <div id="reminder-section">
+        <div id="reminder-tag">Reminder</div>
+        <div id="reminder-interaction-section">
+          <div id="reminder-question">Did you Bike yesterday?</div>
+          <div id="reminder-option-wrapper">
+            <div id="reminder-option-yes" class="reminder-option">Yes</div>
+            <div id="reminder-option-no" class="reminder-option">No</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Activities Section -->
+      <div id="past-activity" class="main-container">
+        <div id="pAct-and-progress">
+          <h3 class="container-title">Past Activity</h3>
+          <button type="button" id="view-progress-button" class="form-button">View Progress</button>
+        </div>
+
+        <div class="content-container">
+
+          <!-- Past Activities Add New Button -->
+          <div id="pAct-Add" class="form-container">
+            <button id="addPastActivityButton" class="addBtn">Add New Activity</button>
+          </div>
+          
+          <!-- Past Activities Form -->
+          <div id="pAct-Form" class="form-container hide">
+            <div class="form">
+              <label>
+                Date
+                <input type="date" id="pAct-date" />
+              </label>
+
+              <div id="activity-for-wrapper">
+                <label>
+                  View Activity for:
+                  <select name="past-activies" id="pAct-activity" >
+                    <option value="Walk">Walk</option>
+                    <option value="Run">Run</option>
+                    <option value="Swim">Swim</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Basketball">Basketball</option>
+                  </select>
+                </label>
+                <div class="form-label">for</div>
+              </div>
+              
+              <div id="scalar-unit-wrapper">
+                <label id="label-scalar">
+                  Time/Distance
+                  <input type="number" id="pAct-scalar"/>
+                </label>
+                <label id="label-units">
+                  Units
+                  <input name="text" id="pAct-unit" value="km" readonly />
+                </label>
+              </div>
+              <button type="button" id="submitPastActivityButton" class="form-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      <!-- Future Plans Section -->
+      <div id="future-activity" class="main-container">
+        <h3 class="container-title">Future Plans</h3>
+        <div class="content-container">
+
+          <!-- Future Plans Add New Button -->
+          <div id="fAct-Add" class="form-container">
+            <button id="addFutureActivityButton" class="addBtn">Add New Activity</button>
+          </div>
+          
+          <!-- Future Plans Form -->
+          <div id="fAct-Form" class="form-container hide">
+            <div class="form">
+              <label>
+                  Date
+                <input type="date" id="fAct-date" />
+              </label>
+              <label>
+                Activity
+                <select name="future-activies" id="fAct-activity">
+                  <option value="Walk">Walk</option>
+                  <option value="Run">Run</option>
+                  <option value="Swim">Swim</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Yoga">Yoga</option>
+                  <option value="Soccer">Soccer</option>
+                  <option value="Basketball">Basketball</option>
+                </select>
+              </label>
+              <button type="button" id="submitFutureActivityButton" class="form-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  
+</body>
+</html>

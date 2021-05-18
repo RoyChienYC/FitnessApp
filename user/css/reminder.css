@@ -1,0 +1,177 @@
+#reminder-section {
+  display: none;
+  flex-direction: column;
+  background-color: #5361e0;
+  font-weight: 900;
+  color: white;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+#reminder-tag {
+  color: black;
+  font-style: italic;
+  margin-right: 60px;
+  font-weight: 800;
+  font-size: 1.3em;
+}
+
+#reminder-interaction-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-weight: 600;
+  margin-left: -60px;
+}
+
+#reminder-interaction-section > div {
+  margin-left: 60px;
+  margin-top: 5px;
+}
+
+#reminder-option-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.reminder-option {
+  text-decoration: underline;
+}
+
+.reminder-option + .reminder-option {
+  margin-left: 60px;
+}
+
+.reminder-option:hover {
+  cursor: pointer;
+}
+
+/* || Progess Modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  min-width: 300px;
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.65); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #f2f2f2;
+  padding: 70px 10px;
+  width: 80%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#progress-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#progress-form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.progress-form-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.progress-form-item label {
+  font-size: 12px;
+}
+
+#progress-form-inputs select,
+#progress-form-inputs input {
+  width: 90px;
+  padding: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+#progress-form-inputs select {
+  min-width: 110px;
+}
+
+#barchart-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+#view-progress-button {
+  display: inline;
+}
+
+#submit-progress-form-button {
+  align-self: center;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  font-size: 40px;
+  padding: 5px 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close:hover,
+.close:focus {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 360px) {
+  .progress-form-item label {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #reminder-section {
+    flex-direction: row;
+  }
+
+  /* #reminder-interaction-section {
+    flex-direction: row;
+  } */
+
+  #progress-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #progress-form-inputs {
+    flex-direction: row;
+  }
+
+  #progress-form-inputs select,
+  #progress-form-inputs input {
+    margin: 0;
+  }
+
+  #submit-progress-form-button {
+    margin-left: 30px;
+  }
+}

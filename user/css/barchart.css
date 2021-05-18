@@ -1,0 +1,45 @@
+#chart-anchor {
+  max-width: 1000px;
+}
+
+.barchart {
+  background: #333;
+}
+
+/* To style the text content of the chart */
+.barchart text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  fill: white;
+  font-size: 10px;
+}
+
+/* To style the text of the axis labels */
+.barchart-x-axis-label,
+.barchart-y-axis-label {
+  font-size: 14px !important;
+}
+
+/* To style the bars */
+.barchart-bar {
+  fill: #53e0cd;
+}
+
+/* To style x axis lines */
+.barchart-x-axis line,
+.barchart-x-axis path {
+  stroke: white;
+  stroke-width: 4px;
+}
+
+/* To style y axis lines */
+.barchart-y-axis line,
+.barchart-y-axis path {
+  stroke: white;
+  stroke-width: 4px;
+}
+
+.tick line {
+  visibility: hidden;
+}
+
