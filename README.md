@@ -5,3 +5,4 @@
 * Ferica Ting
 * Matthew Morales
 
+![](images/Fitpic1.png)
